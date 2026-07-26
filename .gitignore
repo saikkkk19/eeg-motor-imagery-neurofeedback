@@ -1,0 +1,37 @@
+# ---- Human-subjects EEG data — never commit ----
+*.eeg
+*.vhdr
+*.vmrk
+*.xdf
+*.set
+*.fdt
+*.edf
+*.bdf
+*.fif
+*.gdf
+
+# ---- Trained models / pickled artifacts ----
+*.pkl
+*.joblib
+*.h5
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# ---- Logs / scratch ----
+log/
+logs/
+*.log
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*.lnk
+.vscode/
+.idea/

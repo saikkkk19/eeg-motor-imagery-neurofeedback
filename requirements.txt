@@ -1,0 +1,23 @@
+# EEG / signal processing
+mne
+numpy
+pandas
+scipy
+
+# Machine learning
+scikit-learn
+joblib
+
+# Visualization
+matplotlib
+seaborn
+
+# Streaming / IO (real-time pipeline + session analysis)
+pylsl
+pyxdf
+msgpack
+toml
+
+# Note: the real-time client also imports `pyicom` (internal messaging library),
+# which is not available on PyPI. MATLAB additionally requires the Lab Streaming
+# Layer library and g.tec's g.STIMbox toolbox.

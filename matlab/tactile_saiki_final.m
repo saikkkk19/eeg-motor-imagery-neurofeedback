@@ -13,7 +13,7 @@ feedbackDuration  = 0.5;            % Duration of feedback pulse
 numFeedbackPulses = 3;              % Number of feedback pulses
 feedbackInterval  = 0.2;            % Interval between feedback pulses
 
-%% gSTIMboxの設定
+%% g.STIMbox setup
 clc
 com = 13;
 
@@ -21,7 +21,7 @@ handle = gSTIMboxinit(com, 256, 8, 1);
 gSTIMboxsetMode(handle, [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16], [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]);
 gSTIMboxreset(handle);
 
-%% LSLの設定
+%% LSL setup
 disp('Loading library...');
 lib = lsl_loadlib();
 info = lsl_streaminfo(lib,'si_marker','Markers',1,0,'cf_string','si_marker');

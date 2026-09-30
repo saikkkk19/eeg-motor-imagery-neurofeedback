@@ -1,40 +1,26 @@
-"""Example program to demonstrate how to send string-valued markers into LSL."""
+"""Send the trial marker sequence into LSL, for testing without the stimulus program."""
 
-import random
 import time
 
 from pylsl import StreamInfo, StreamOutlet
 
 
 def main():
-    # first create a new stream info (here we set the name to MyMarkerStream,
-    # the content-type to Markers, 1 channel, irregular sampling rate,
-    # and string-valued data) The last value would be the locally unique
-    # identifier for the stream as far as available, e.g.
-    # program-scriptname-subjectnumber (you could also omit it but interrupted
-    # connections wouldn't auto-recover). The important part is that the
-    # content-type is set to 'Markers', because then other programs will know how
-    #  to interpret the content
-    info = StreamInfo('MyMarkerStream', 'Markers', 1, 0, 'string', 'myuidw43536')
-
-    # next make an outlet
+    # same stream definition as the MATLAB stimulus programs
+    info = StreamInfo('si_marker', 'Markers', 1, 0, 'string', 'si_marker')
     outlet = StreamOutlet(info)
 
+    # 4: preparation, 8: right-hand cue, 16: left-hand cue, 32: rest
+    trials = [['4', '8', '32'], ['4', '16', '32']]
+    pauses = [3, 3, 4]
+
     print("now sending markers...")
-    start = '206'
-    #markernames = ['206', '1', '2', '3', '4', '5', '6', '7', '8', '9', '101', '102', '103', '104', '105', '106', '107', '108', '109', '255']
-    markernames = ['206', '11', '11', '13', '14', '15', '6', '7', '8', '9', '101', '102', '103', '104', '105', '106', '107', '108', '109', '255']
-    end = '255'
     while True:
-        input("Press Any key to start new trial")
-        #outlet.push_sample([start])
-        for marker in markernames:
-            outlet.push_sample([marker])
-            time.sleep(0.6)
-        # pick a sample to send an wait for a bit
-        #outlet.push_sample([random.choice(markernames)])
-        #time.sleep(random.random() * 3)
-        #outlet.push_sample([start])
+        input("Press Enter to start a new run")
+        for markers in trials:
+            for marker, pause in zip(markers, pauses):
+                outlet.push_sample([marker])
+                time.sleep(pause)
 
 
 if __name__ == '__main__':

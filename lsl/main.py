@@ -206,29 +206,10 @@ def main(icom_server,
         
     #file_data.close()
     print("terminate")
-    
-"""
-def server(ip, port, conns):
-    logger = logging.getLogger(__name__)
-
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind((conf.ip_address, conf.port))
-    print("server info. ip: %s, port: %s"%(str(conf.ip_address), str(conf.port)))
-    
-    #server.settimeout(10)
-    while True:
-        server.listen()
-        conn, addr = server.accept()
-        conns.append(conn)
-        #print("connected : %s" %str(addr))
-        logger.debug("New socket connection was established. '%s'"%str(addr))
-"""
 
 
 if __name__ == "__main__":
 
-    #import conf
-    
     try:
         with open("config.toml", "r") as f:
             config = tomllib.load(f)
@@ -275,10 +256,6 @@ if __name__ == "__main__":
     server.start()
     server.wait_for_connection()
 
-    #icom_buffer = IcomBuffer(server)
-    #icom_buffer.start()
-
-    #data_callback = {"icom": icom_buffer}
     data_callback = {"icom": server}
     
     main(icom_server=server,

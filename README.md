@@ -39,7 +39,7 @@ Online:   EEG amp ──LSL(EEG)──> epoching ──> CSP + classifier ──
 - `lsl/main.py` + `lsl/acquisition.py` — resolve the EEG and marker LSL streams and
   epoch incoming data.
 - `lsl/client_clf.py` — load the pretrained CSP + classifier and predict in real time.
-- `lsl/config.toml` / `lsl/conf.py` — channels, streams, buffers, and marker settings.
+- `lsl/config.toml` — channels, streams, buffers, and marker settings.
 - `matlab/visual_saiki_final.m`, `matlab/tactile_saiki_final.m` — the two feedback
   paradigms; both send markers and read the `clfresults` stream over LSL.
 - `notebooks/Visual_neurofeedback_.ipynb`, `notebooks/Tactile_neurofeedback.ipynb` —
@@ -58,7 +58,7 @@ Online:   EEG amp ──LSL(EEG)──> epoching ──> CSP + classifier ──
 Python (see `requirements.txt`): `mne`, `numpy`, `pandas`, `scipy`, `scikit-learn`,
 `matplotlib`, `seaborn`, `joblib`, `pyxdf`, `pylsl`, `msgpack`, `toml`.
 
-> The real time client also uses `pyicom` (an internal messaging library) and MATLAB
+> The real time client also uses `pyicom` (a socket messaging library) and MATLAB
 > needs the **LSL** library plus g.tec's **g.STIMbox** toolbox — none of which are on
 > PyPI/this repo.
 

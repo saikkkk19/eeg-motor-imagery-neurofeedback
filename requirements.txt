@@ -18,6 +18,6 @@ pyxdf
 msgpack
 toml
 
-# Note: the real-time client also imports `pyicom` (internal messaging library),
+# Note: the real-time client also imports `pyicom` (a socket messaging library),
 # which is not available on PyPI. MATLAB additionally requires the Lab Streaming
 # Layer library and g.tec's g.STIMbox toolbox.
